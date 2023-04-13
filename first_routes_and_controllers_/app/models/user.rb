@@ -9,5 +9,9 @@
 #  updated_at :datetime         not null
 #
 class User < ApplicationRecord
+    has_many :artworks,
+        foreign_key: :artist_id,
+        class_name: :Artwork
+        
     validates :username, presence: true, uniqueness: true
 end
