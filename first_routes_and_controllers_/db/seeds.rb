@@ -28,8 +28,8 @@ end
     )
   end
 
-10.times do 
-    ArtworkShare.create!(
+until ArtworkShare.all.length == 10
+    ArtworkShare.create(
         :artwork_id => rand(1..10),
         :viewer_id => rand(1..10)
     )
