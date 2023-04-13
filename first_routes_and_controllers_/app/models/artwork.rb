@@ -1,4 +1,6 @@
 class Artwork < ApplicationRecord
+    validates :title, uniqueness: {scope: :artist_id, message: "artist already has #{:title}"} 
+
     belongs_to :artist, 
         foreign_key: :artist_id,
         class_name: :User
@@ -11,5 +13,4 @@ class Artwork < ApplicationRecord
         through: :artwork_shares,
         source: :viewer
 
-    validates :title, uniqueness: {scope: :artist_id, message: "artist already has #{:title}"} 
 end
